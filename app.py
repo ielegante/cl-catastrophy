@@ -4,6 +4,11 @@ from langchain.prompts import ChatPromptTemplate
 from langchain.schema import StrOutputParser
 from langchain.schema.runnable import Runnable
 from langchain.schema.runnable.config import RunnableConfig
+from sanic import Sanic
+app = Sanic()
+ 
+ 
+
 
 import chainlit as cl
 
@@ -11,6 +16,7 @@ import chainlit as cl
 # e.g. GROQ_API_KEY
 # os.getenv("GROQ_API_KEY")
 
+@app.route('/')
 @cl.on_chat_start
 async def on_chat_start():
     model = ChatGroq(
@@ -49,7 +55,7 @@ async def on_chat_start():
     runnable = prompt | model | StrOutputParser()
     cl.user_session.set("runnable", runnable)
 
-
+@app.route('/')
 @cl.on_message
 async def on_message(message: cl.Message):
     runnable = cl.user_session.get("runnable")  # type: Runnable
