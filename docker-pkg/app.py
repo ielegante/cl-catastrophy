@@ -49,7 +49,7 @@ async def on_chat_start():
     )
     runnable = prompt | model | StrOutputParser()
     cl.user_session.set("runnable", runnable)
-    await cl.Message("Hello! I'm the (legal) Catastrophizer! Try asking me something."").send()
+    await cl.Message("Hello! I'm the (legal) Catastrophizer! Try asking me something.").send()
 
 # @app.route('/')
 @cl.on_message
