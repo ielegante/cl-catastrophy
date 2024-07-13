@@ -2,8 +2,6 @@
 from langchain_groq import ChatGroq
 from langchain.prompts import ChatPromptTemplate
 from langchain.schema import StrOutputParser
-from langchain.schema.runnable import Runnable
-from langchain.schema.runnable.config import RunnableConfig
 
 # app = Sanic("TheCatastrophizer")
  
@@ -51,7 +49,7 @@ async def on_chat_start():
     )
     runnable = prompt | model | StrOutputParser()
     cl.user_session.set("runnable", runnable)
-    await cl.Message("Hello world from Vercel!").send()
+    await cl.Message("Hello! I'm the (legal) Catastrophizer! Try asking me something."").send()
 
 # @app.route('/')
 @cl.on_message
