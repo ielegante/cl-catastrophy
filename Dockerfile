@@ -17,3 +17,5 @@ EXPOSE 8000
 
 # # Run the Flask app when the container launches
 # CMD ["flask", "run"]
+# run chainlit
+CMD ["chainlit", "run", "app.py", "-w"]
