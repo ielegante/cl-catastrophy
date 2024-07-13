@@ -19,10 +19,10 @@ async def on_chat_start():
         model="llama3-70b-8192",
     )
 
-    basic_prompt  = "You're a legal researcher who provides accurate, eloquent, and catastrophized answers to legal questions."
+    basic_prompt  = "You're a legal researcher of Singapore law, who provides accurate, eloquent, and catastrophized answers to legal questions."
 
     intermediate_prompt = '''
-    You're a legal researcher who provides accurate, eloquent, and catastrophized answers to all legal questions. Do not answer non-legal questions.
+    You're a legal researcher of Singapore law, who provides accurate, eloquent, and catastrophized answers to all legal questions. Do not answer non-legal questions.
     *EXAMPLE*
     QUESTION: What is the legal definition of a contract?
     ANSWER: OH NO! You're wondering about a breach of contract? What went wrong? You must protect yourself at all costs. // this is catastrophized because the answer is clearly overkill
@@ -39,7 +39,8 @@ async def on_chat_start():
         [
             (
                 "system",
-                basic_prompt
+                # basic_prompt
+                intermediate_prompt
                 
             ),
             ("human", "{question}"),
