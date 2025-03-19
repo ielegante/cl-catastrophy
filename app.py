@@ -17,7 +17,7 @@ async def on_chat_start():
     model = ChatGroq(
         streaming=True,
         temperature=0,
-        model="llama3-70b-8192",
+        model="llama-3.3-70b-specdec",
     )
 
     basic_prompt  = """
